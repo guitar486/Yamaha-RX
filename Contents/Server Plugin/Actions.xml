@@ -1,0 +1,52 @@
+<Actions>
+
+  <Action id="power_toggle" deviceFilter='self'>
+    <Name>Power Toggle</Name>
+    <CallbackMethod>actionHandler</CallbackMethod>
+  </Action>
+
+  <Action id="volume_up" deviceFilter='self'>
+    <Name>Volume Up</Name>
+    <CallbackMethod>actionHandler</CallbackMethod>
+  </Action>
+
+  <Action id="volume_down" deviceFilter='self'>
+    <Name>Volume Down</Name>
+    <CallbackMethod>actionHandler</CallbackMethod>
+  </Action>
+
+  <Action id="volume_mute" deviceFilter='self'>
+    <Name>Volume Mute</Name>
+    <ConfigUI>
+      <Field type="menu" id="mute_action" defaultValue="item2">
+      	<Label>Popup Menu:</Label>
+
+      	<List>
+      		<Option value="mute_on">Mute On</Option>
+      		<Option value="mute_off">Mute Off</Option>
+      		<Option value="mute_toggle">Mute Toggle</Option>
+      	</List>
+      	<CallbackMethod>muteAction</CallbackMethod>
+      </Field>
+    </ConfigUI>
+      <CallbackMethod>actionHandler</CallbackMethod>
+  </Action>
+
+
+  <Action id="set_input" deviceFilter='self'>
+		<Name>Set Input</Name>
+		<ConfigUI>
+			<Field type="menu" id="input">
+				<Label>Input:</Label>
+				<List method="get_inputs" class="self"/>
+			</Field>
+		</ConfigUI>
+		<CallbackMethod>actionHandler</CallbackMethod>
+	</Action>
+
+  <Action id="sound_program_2ch" deviceFilter="self">
+    <Name>Sound Program: 2ch Stereo</Name>
+    <CallbackMethod>actionHandler</CallbackMethod>
+  </Action>
+
+</Actions>

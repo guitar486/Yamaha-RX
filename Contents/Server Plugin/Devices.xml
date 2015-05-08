@@ -1,0 +1,45 @@
+<Devices>
+
+	<Device type="custom" id="yamahaReceiver">
+		<Name>Yahama Receiver</Name>
+		<States>
+
+			<State id="power" defaultValue="Standby">
+				<ValueType>
+					<List>
+						<Option value="standby">Standby</Option>
+						<Option value="on">On</Option>
+					</List>
+				</ValueType>
+				<TriggerLabel>Power</TriggerLabel>
+				<ControlPageLabel>Power</ControlPageLabel>
+			</State>
+
+			<State id="muted" defaultValue="false">
+				<ValueType boolType='OnOff'>Boolean</ValueType>
+				<TriggerLabel>Muted</TriggerLabel>
+				<ControlPageLabel>Muted</ControlPageLabel>
+			</State>
+
+			<State id='volume'>
+				<ValueType>Float</ValueType>
+				<TriggerLabel>Volume</TriggerLabel>
+				<ControlPageLabel>Volume</ControlPageLabel>
+			</State>
+
+			<State id='input'>
+				<ValueType>String</ValueType>
+				<TriggerLabel>Input</TriggerLabel>
+				<ControlPageLabel>Input</ControlPageLabel>
+			</State>
+
+		</States>
+		<UiDisplayStateId>power</UiDisplayStateId>
+		<ConfigUI>
+			<Field id="receiverIP" type="textfield" readonly="no" defaultValue="0.0.0.0">
+				<Label>Receiver IP Address</Label>
+			</Field>
+		</ConfigUI>
+	</Device>
+
+</Devices>
