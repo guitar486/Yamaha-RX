@@ -96,30 +96,32 @@ class Plugin(indigo.PluginBase):
 		try:
 			while True:
 
-				if self.q.empty():
+				if self.receiver != None:
 
-					# Get receiver "basic status"
-					status = self.receiver.basic_status
+					if self.q.empty():
 
-					# On state
-					if status[0] == 'On':
-					# if self.receiver.on:
-						self.receiver.device.updateStateOnServer('power', value='on')
-					else:
-						self.receiver.device.updateStateOnServer('power', value='standby')
+						# Get receiver "basic status"
+						status = self.receiver.basic_status
 
-					# Current Volume state
-					self.receiver.device.updateStateOnServer('volume', value=status[1])
+						# On state
+						if status[0] == 'On':
+						# if self.receiver.on:
+							self.receiver.device.updateStateOnServer('power', value='on')
+						else:
+							self.receiver.device.updateStateOnServer('power', value='standby')
 
-					# Mute state
-					if status[2] == 'Off':
-					# if self.receiver.mute == 'Off':
-						self.receiver.device.updateStateOnServer('muted', value='false')
-					else:
-						self.receiver.device.updateStateOnServer('muted', value='true')
+						# Current Volume state
+						self.receiver.device.updateStateOnServer('volume', value=status[1])
 
-					# Current Input state
-					self.receiver.device.updateStateOnServer('input', status[3])
+						# Mute state
+						if status[2] == 'Off':
+						# if self.receiver.mute == 'Off':
+							self.receiver.device.updateStateOnServer('muted', value='false')
+						else:
+							self.receiver.device.updateStateOnServer('muted', value='true')
+
+						# Current Input state
+						self.receiver.device.updateStateOnServer('input', status[3])
 
 				# Time between polling
 				self.sleep(1)
