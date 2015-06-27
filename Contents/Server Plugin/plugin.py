@@ -38,6 +38,10 @@ class Plugin(indigo.PluginBase):
 		ip = dev.pluginProps.get('receiverIP', '')
 		ctrl_url = 'http://' + dev.pluginProps.get("receiverIP", "") + ':80/YamahaRemoteControl/ctrl'
 
+		localPropsCopy = dev.pluginProps
+		localPropsCopy['address'] = dev.pluginProps.get("receiverIP", "")
+		dev.replacePluginPropsOnServer(localPropsCopy)
+
 		# Create receiver object
 		self.createNewReceiverDevice(dev, devId, ctrl_url)
 
